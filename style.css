@@ -1,0 +1,373 @@
+/* ====================================
+   VARIABLE & RESET DASAR
+   ==================================== */
+:root {
+    --bg-dark: #1e1e1e; 
+    --bg-black: #121212; 
+    --bg-section: #252525; 
+    --text-light: #f0f0f0;
+    --text-gray: #aaaaaa;
+    --accent-orange: #ff6f00; 
+    --nav-width: 250px;
+    --typing-steps: 18; /* Diperlukan jika Anda ingin mengaktifkan lagi typing effect */
+    --typing-time: 3s; /* Diperlukan jika Anda ingin mengaktifkan lagi typing effect */
+}
+
+/* Fungsionalitas Smooth Scroll */
+html { 
+    scroll-behavior: smooth; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+    animation: fadeIn 1s ease-out;
+}
+
+/* --- Layout Utama --- */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ====================================
+   SIDEBAR NAVIGASI (FIXED)
+   ==================================== */
+.sidebar {
+    width: var(--nav-width);
+    background-color: var(--bg-black);
+    padding: 30px 20px;
+    position: fixed; 
+    height: 100vh;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 100;
+    padding-top: 40px; 
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--text-light);
+    margin-bottom: 50px;
+    position: relative;
+    padding-left: 20px;
+    line-height: 1;
+}
+
+/* Aksen 'L' kecil di Logo */
+.logo-accent-top {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid var(--accent-orange);
+    border-left: 2px solid var(--accent-orange);
+}
+
+.main-nav ul { list-style: none; }
+.nav-item { margin-bottom: 25px; }
+
+.nav-item a {
+    color: var(--text-gray);
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: block;
+    padding: 8px 10px;
+}
+.nav-item a i { margin-right: 10px; width: 20px; text-align: center; }
+
+/* Aksen Saat Hover/Focus */
+.nav-item:hover a, 
+.nav-item a:focus { 
+    color: var(--accent-orange); 
+    font-weight: 600;
+    border-left: 3px solid var(--accent-orange);
+    padding-left: 10px;
+    transform: none; 
+}
+
+
+/* ====================================
+   KONTEN UTAMA & HEADER SECTION
+   ==================================== */
+.main-content {
+    margin-left: var(--nav-width);
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+    display: block; 
+}
+
+.content-section {
+    padding: 100px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+/* REVISI: Optimalisasi Kepadatan Hero Section (min-height: 75vh) */
+#header.hero-section {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around; 
+    padding-top: 50px;
+    padding-bottom: 50px; 
+}
+
+/* Dekorasi L Besar */
+.accent-frame-lg { 
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-color: var(--accent-orange);
+    border-style: solid;
+    z-index: 10;
+}
+.top-right-lg { top: 0; right: 0; border-width: 0 5px 0 0; border-top: 5px solid var(--accent-orange); border-right: 5px solid var(--accent-orange); }
+
+.greeting { color: var(--text-gray); margin-bottom: 10px; }
+.accent-name { color: var(--accent-orange); font-style: italic; font-weight: 600; }
+
+/* >>> PERUBAHAN 1: UKURAN FONT H1 DIKURANGI DARI 48PX KE 36PX */
+h1 { 
+    font-size: 36px; /* NILAI BARU */
+    font-weight: 700; 
+    line-height: 1.2; 
+    margin-bottom: 20px; 
+}
+
+/* REVISI: Gaya Tombol Outline Baru (Tidak Polos) */
+.btn-primary { 
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    
+    /* Desain Outline */
+    background-color: transparent; 
+    color: var(--accent-orange); 
+    border: 2px solid var(--accent-orange); 
+    
+    /* Transisi untuk Hover Effect */
+    transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease; 
+    margin-top: 20px; 
+}
+
+/* Animasi Tombol Saat Hover (Fill Effect) */
+.btn-primary:hover {
+    background-color: var(--accent-orange);
+    color: var(--bg-black); 
+    transform: translateY(-2px); 
+    box-shadow: 0 5px 15px rgba(255, 111, 0, 0.4); 
+}
+/* END REVISI TOMBOL */
+
+
+/* --- Foto Profil Bundar & Animasi Glow --- */
+
+/* >>> PERUBAHAN 2: UKURAN WIDTH DAN HEIGHT FOTO DIUBAH DARI 350PX KE 300PX UNTUK LINGKARAN SEMPURNA */
+.hero-photo.circular-photo {
+    width: 300px; /* NILAI BARU */
+    height: 300px; /* NILAI BARU */
+    background-color: var(--bg-dark); 
+    border-radius: 50%; /* Sudah Bundar dan Rapi */
+    border: 5px solid var(--accent-orange); 
+    position: relative;
+    overflow: hidden;
+    z-index: 5;
+    /* Transisi untuk ANIMASI KLIK & HOVER */
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    
+    /* Animasi Glow (DIPERTAHANKAN) */
+    box-shadow: 0 0 15px rgba(255, 111, 0, 0.5); 
+    animation: glowPulse 2s infinite alternate;
+}
+
+/* REVISI: Animasi Hover Foto Bundar (DIPERTAHANKAN) */
+.hero-photo.circular-photo:hover {
+    transform: scale(1.02); /* Skala kecil */
+    box-shadow: 0 0 30px rgba(255, 111, 0, 1); /* Bayangan lebih kuat */
+    cursor: pointer;
+}
+
+/* Animasi Interaktif Foto Bundar: Efek saat di-klik (DIPERTAHANKAN) */
+.hero-photo.circular-photo:active {
+    transform: scale(1.05); 
+    border-color: #ff3300; 
+    box-shadow: 0 0 25px rgba(255, 51, 0, 1);
+    animation: none; 
+}
+
+.hero-photo.circular-photo img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block; 
+}
+
+/* Memastikan pseudo-element lama dihilangkan sepenuhnya (Fix konflik) */
+.hero-photo::before, .hero-photo::after { content: none !important; }
+
+/* ====================================
+   ANIMASI MURNI CSS 
+   ==================================== */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Animasi Typing */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 99.9% }
+}
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--accent-orange); }
+}
+.typing-effect {
+    /* Catatan: Karena Anda menghapus class 'typing-effect' dari h1 di HTML terakhir Anda,
+       Saya menambahkan kembali class tersebut ke h1 di HTML yang saya berikan.
+       Jika h1 tidak memiliki class typing-effect, animasi di bawah tidak akan berjalan. */
+    animation: 
+        typing var(--typing-time) steps(var(--typing-steps), end),
+        blink-caret .75s step-end infinite;
+    width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: .15em solid var(--accent-orange);
+}
+.cursor { animation: blink-caret .75s step-end infinite; }
+
+/* Animasi Glow/Pulse pada Foto Bundar */
+@keyframes glowPulse {
+    from { box-shadow: 0 0 10px rgba(255, 111, 0, 0.3); }
+    to { box-shadow: 0 0 20px rgba(255, 111, 0, 0.8), 0 0 5px rgba(255, 111, 0, 0.5); }
+}
+
+/* REVISI: Perbaikan Alur Scrolling (Menghapus Transisi Target) */
+/* Section kini terlihat secara default, memastikan scrolling mulus antar section. */
+#header.hero-section {
+    opacity: 1;
+    transform: translateY(0);
+    transition: none;
+}
+
+
+/* ====================================
+   SECTION KONTEN & GRID 
+   ==================================== */
+.section-title { font-size: 36px; margin-bottom: 50px; border-bottom: 2px solid var(--text-gray); display: inline-block; padding-bottom: 10px; }
+.section-title span { color: var(--accent-orange); font-weight: 700; }
+
+/* --- SKILL SECTION (CSS Grid) --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+.skill-card {
+    background-color: var(--bg-section);
+    padding: 30px 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    transition: transform 0.3s ease, border-top 0.3s ease;
+    border-top: 3px solid transparent;
+}
+.skill-card:hover { border-top: 3px solid var(--accent-orange); transform: translateY(-5px); }
+.skill-card i { font-size: 40px; color: var(--accent-orange); display: block; margin-bottom: 10px; }
+
+/* --- PROJECT SECTION (CSS Grid) --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.project-item {
+    height: 350px;
+    background-color: var(--bg-section);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    
+    /* Memastikan gambar background dari HTML tampil */
+    background-size: cover;
+    background-position: center;
+}
+.project-item:hover { transform: scale(1.03); }
+
+.project-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background-color: rgba(255, 111, 0, 0.85); 
+    color: var(--bg-black);
+    font-weight: 700;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
+.project-item:hover .project-overlay { transform: translateY(0); }
+
+/* ====================================
+   CONTACT SECTION (SEDERHANA) & FOOTER
+   ==================================== */
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+.contact-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-gray);
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-link:hover {
+    color: var(--accent-orange);
+    transform: translateY(-5px);
+}
+
+.contact-link i {  
+    font-size: 50px; 
+    color: var(--accent-orange);
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover i {
+    color: var(--text-light);
+}
+
+.main-footer {
+    padding: 20px 50px;
+    background-color: var(--bg-black);
+    color: var(--text-gray);
+    text-align: center;
+    font-size: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
